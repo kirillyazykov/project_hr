@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Фонд оплаты труда</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .amount { text-align: right; }
+        .percentage { text-align: right; }
+    </style>
+</head>
+<body>
+    <h1>Фонд оплаты труда</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Должность</th>
+                <th class="amount">Сумма ЗП</th>
+                <th class="percentage">Доля (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in salary_data %}
+            <tr>
+                <td>{{ row.position }}</td>
+                <td class="amount">{{ row.total_salary }}</td>
+                <td class="percentage">{{ row.percentage }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="/">Назад к списку сотрудников</a>
+</body>
+</html>
