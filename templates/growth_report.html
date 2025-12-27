@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёт о росте количества сотрудников</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .total { background-color: #e6f3ff; }
+    </style>
+</head>
+<body>
+    <h1>Отчёт о росте количества сотрудников</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Должность</th>
+                {% for year in years %}
+                <th>{{ year }}</th>
+                {% endfor %}
+                <th class="total">Итог</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in growth_data %}
+            <tr>
+                <td>{{ row.position }}</td>
+                {% for year in years %}
+                <td>{{ row[year|string] }}</td>
+                {% endfor %}
+                <td class="total">{{ row.total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="/">Назад к списку сотрудников</a>
+</body>
+</html>
