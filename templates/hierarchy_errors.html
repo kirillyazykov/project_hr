@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибки иерархии</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Ошибки иерархии</h1>
+    
+    {% if errors %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Сотрудник</th>
+                    <th>Должность</th>
+                    <th>Начальник</th>
+                    <th>Должность начальника</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for error in errors %}
+                <tr>
+                    <td>{{ error.employee }}</td>
+                    <td>{{ error.position }}</td>
+                    <td>{{ error.manager }}</td>
+                    <td>{{ error.manager_position }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="success">Ошибок в иерархии не найдено!</p>
+    {% endif %}
+    
+    <a href="/">Назад к списку сотрудников</a>
+</body>
+</html>
